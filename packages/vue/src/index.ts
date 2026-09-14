@@ -6,10 +6,8 @@ function componentName(vm: any): string | undefined {
     return vm.$vnode.componentOptions.tag // Vue 2
   }
 
-  // Vue 3: `name` is only set when declared explicitly and `__name` only for
-  // `<script setup>` components. Fall back to the filename in `__file`, which
-  // vue-loader sets in development and, when the app enables its
-  // `exposeFilename` option, as a basename in production builds.
+  // `__file` comes from vue-loader: always in development, in production
+  // only as a basename and only when the app enables its `exposeFilename` option.
   const options = vm?.$options
   if (!options) return undefined
 
